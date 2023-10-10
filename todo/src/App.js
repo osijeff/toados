@@ -1,24 +1,55 @@
-import logo from './logo.svg';
+import {AiOutlineDelete} from 'react-icons/ai'
+import {BsCheckLg} from 'react-icons/bs'
 import './App.css';
+import './components/CSS/style.css'
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <>
+<h1>My Todos</h1>
+      <div className='todo-wrapper'>
+        <div className='todo-input'>
+          <div className='todo-input-item'>
+            <label>Title</label>
+            <input type='text' name='title' placeholder="What is the  task title?" />
+          </div>
+
+          <div className='todo-input-item'>
+            <label>Description</label>
+            <input type='text' name='title'  placeholder="What's the task description?" />
+          </div>
+
+          <div className='todo-input-item'>
+            <button type='button' className='primaryBtn' >Add</button>
+          </div>
+        </div>
+
+
+      <div className='btn-area'>
+        <button >Todo</button>
+        <button  >Completed</button>
+      </div>
+
+  
+
+ 
+          <div className='todo-list' >
+
+          <div className='todo-list-item'>
+          <h3>todo title</h3>
+          <p>todo description</p>
+          </div>
+          <div className='icons'>
+           < AiOutlineDelete className='icon' />
+           < BsCheckLg className='check-icon' />
+          </div>
+        </div>
+        
+    
+   
+      </div>
+ 
+    </>
   );
 }
 
