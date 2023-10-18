@@ -35,6 +35,13 @@ function App() {
       localStorage.setItem('todolist', JSON.stringify(updatedTodoarr))
   
     }
+      // delete functionality
+    const handleDeleteTodo = (index) => {
+      let updatedTodoarr = [...allTodos];
+      updatedTodoarr.splice(index, 1);
+      setTodos(updatedTodoarr);
+      localStorage.setItem('todolist', JSON.stringify(updatedTodoarr));
+    };
 
     useEffect(()=>{
       let savedTodo = JSON.parse(localStorage.getItem('todolist'));
@@ -42,7 +49,10 @@ function App() {
         setTodos(savedTodo);
       }
         },[])
-    
+
+      
+
+
   return (
     <>
 <h1>My Todos</h1>
@@ -82,8 +92,8 @@ function App() {
           <p>{item.description}</p>
           </div>
           <div className='icons'>
-           < AiOutlineDelete className='icon' />
-           < BsCheckLg className='check-icon' />
+           < AiOutlineDelete className='icon' onClick={() => handleDeleteTodo(index)}/>
+           < BsCheckLg className='check-icon' title="Complete" />
           </div>
         </div>
         )
