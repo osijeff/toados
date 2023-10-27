@@ -60,7 +60,6 @@ function App() {
       localStorage.setItem('todolist', JSON.stringify(updatedTodoarr));
     };
 
-    // FUNCTION TO HANDLE TASK COMPLETED FUNCTIONALITY
     const handleCompletedTodo = (index) => {
       let now = new Date();
       let dd = now.getDate();
@@ -72,7 +71,6 @@ function App() {
       let completedOn =
         dd + '-' + mm + '-' + yyyy + ' at ' + hour + ':' + minute + ':' + second;
     
-        // CREATE A NEW TASK OBJECT OF THE TESK SELECTED IN ORDER TO INCLUDE THE TIMESTAMP
       let filteredItem = {
         ...allTodos[index],
         completedOn: completedOn
@@ -92,32 +90,15 @@ function App() {
       if (savedTodo) {
         setTodos(savedTodo);
       }
-
-
-      // Function to fetch data from the Django API
-      async function fetchData() {
-        try {
-          const response = await fetch('http://localhost:8000/api/todos/');
-          const data = await response.json();
-          setTodos(data);
-        } catch (error) {
-          console.error('Error fetching todos:', error);
-        }
-      }
   
-      // Call the function to fetch data when the component is mounted
-      fetchData();
-
-  
-      // FETCH COMPLETED TASK FROM LOCAL STORAGE
-      let savedCompletedTodos = JSON.parse(localStorage.getItem('completedTodos')); 
+      let savedCompletedTodos = JSON.parse(localStorage.getItem('completedTodos')); // Corrected key
       if (savedCompletedTodos) {
         setCompletedTodos(savedCompletedTodos);
       }
   }, []);
   
       
-  const  handleDeleteCompletedTodo= (index) => {
+  const handleDeleteCompletedTodo = (index) => {
     let updatedCompletedArr = [...completedTodos];
     updatedCompletedArr.splice(index, 1);
     setCompletedTodos(updatedCompletedArr);
